@@ -1,0 +1,59 @@
+#include <WiFi.h>
+#include "PubSubClient.h"
+const char* ssid = "Wokwi-GUEST";
+const char* password = "";
+const char* mqttServer = "test.mosquitto.org";
+int port = 1883;
+WiFiClient espClient;
+PubSubClient client(espClient);
+void wifiConnect(){
+  WiFi.begin(ssid, password);
+  while(WiFi.status()!=WL_CONNECTED){
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("Connected");
+}
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  Serial.print("Connecting to Wifi");
+  wifiConnect();
+  client.setServer(mqttServer,port);
+  client.setCallback(callback);
+}
+void callback(char* topic, byte* message, unsigned int length){
+  Serial.print(topic);
+  String strMessage;
+  for(int  i = 0; i<length; i++){
+    strMessage += (char)message[i];
+  }
+  Serial.println(strMessage);
+}
+void mqttReconnect(){
+  while(!client.connected()){
+    Serial.print("Attempting MQTT connection...");
+    if(client.connect("21127608")){
+      Serial.println("connected");
+      client.subscribe("21127608/led");
+    }
+    else{
+      Serial.println("try again in 5 seconds");
+      delay(5000);
+    }
+  }
+}
+
+
+void loop() {
+  if(!client.connected()){
+    mqttReconnect();
+  }
+  client.loop();
+  int temp = random(1, 1000);
+  char buffer[50];
+  sprintf(buffer, "%d", temp);
+  client.publish("21127608/temp",buffer);
+  delay(5000);
+}
+

@@ -1,0 +1,3 @@
+https://maker.ifttt.com/use/nMCkUaP9yawzHT-t0Kal4s8UfguQ0eyU0zLP6CS7e0N
+
+host: maker.ifttt.com/trigger/demo/json/with/key/nMCkUaP9yawzHT-t0Kal4s8UfguQ0eyU0zLP6CS7e0N

@@ -74,7 +74,7 @@ void wifiConnect(){
 void mqttReconnect(){
   while(!client.connected()){
     Serial.print("Attempting MQTT connection...");
-    if(client.connect("21127608")){
+    if(client.connect("21127174")){
       Serial.println("connected");
     }
     else{
@@ -115,6 +115,35 @@ void setup() {
   LCD.print("Nhiet do:");
 
 
+}
+
+void publishToCustomer()
+{
+  int temperature = curData.temAndHumidity.temperature;
+  int humidity = curData.temAndHumidity.humidity;
+  int moiser = curData.moiser;
+  int light = curData.light;
+  int rain = curData.rain;
+
+  char buffer[50];
+  sprintf(buffer, "%d", temperature);
+  client.publish("21127608/temperature",buffer);
+
+  char buffer[50];
+  sprintf(buffer, "%d", humidity);
+  client.publish("21127608/humidity",buffer);
+
+  char buffer[50];
+  sprintf(buffer, "%d", moiser);
+  client.publish("21127608/moiser",buffer);
+
+  char buffer[50];
+  sprintf(buffer, "%d", light);
+  client.publish("21127608/light",buffer);
+
+  char buffer[50];
+  sprintf(buffer, "%d", rain);
+  client.publish("21127608/rain",buffer);
 }
 
 void loop() {

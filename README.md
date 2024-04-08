@@ -3,6 +3,7 @@
 This project to build automation mechanisms for flower care systems using IOT devices
 
 ## Features
+
 **Build automation mechanisms:**
 - Automatically turn on/off watering function
 
@@ -11,13 +12,14 @@ This project to build automation mechanisms for flower care systems using IOT de
 - Automatically turns on/off the heating light
 
 - Automatically open/close curtains to block sunlight
+- 
 ## Tech Stack
 
-**Language:** C++
+- Language: C++
 
-**IoT and Embedded System Simulator:** Wokwi
+- IoT and Embedded System Simulator: Wokwi
 
-**Tool:** Node-Red
+- Tool: Node-Red
 
-**Design:** Fusion 360, Figma
+- Design: Fusion 360, Figma
  

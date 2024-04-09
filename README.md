@@ -12,7 +12,7 @@ This project to build automation mechanisms for flower care systems using IOT de
 - Automatically turns on/off the heating light
 
 - Automatically open/close curtains to block sunlight
-- 
+  
 ## Tech Stack
 
 - Language: C++
